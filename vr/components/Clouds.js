@@ -1,30 +1,38 @@
-import React from 'react'
+import React, {Component} from 'react'
 import {
   asset,
   StyleSheet,
+  Animated,
   View,
   Model
 } from 'react-vr'
 
 
-export default function Clouds (props){
-  const {weatherObj} = props
-  return (
-    <View style={
-      {transform: [
-        {translate: [0,-25,-150]},
-        {rotateX: 90},
-        {rotateZ: weatherObj.wind.deg}
-      ]}
-    }>
+export default class Clouds extends Component {
+
+  constructor(props){
+    super(props)
+    this.state={}
+  }
+
+  render(){
+    return (
+      <View style={
+        {transform: [
+          {translate: [0,-25,-150]},
+          {rotateX: 90},
+          {rotateZ: props.weatherObj.wind.deg}
+        ]}
+      }>
       <Model
-        source={{
-          obj: asset('clouds.obj')
-        }}
-        scale={0.01}
+      source={{
+        obj: asset('clouds.obj')
+      }}
+      scale={0.01}
       />
-    </View>
-  )
+      </View>
+    )
+  }
 }
 
 const styles = StyleSheet.create({
