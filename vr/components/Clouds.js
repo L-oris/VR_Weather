@@ -15,6 +15,9 @@ export default class Clouds extends Component {
     this.state={
       xValue: new Animated.Value(100)
     }
+
+    //repeat clouds animation over&over
+    setInterval(()=>this.moveClouds(), 3000)
   }
 
   componentDidMount(){
@@ -22,6 +25,11 @@ export default class Clouds extends Component {
   }
 
   moveClouds(){
+    if(this.state.xValue._value < 0){
+      return this.setState({
+        xValue: new Animated.Value(100)
+      })
+    }
     Animated.timing(this.state.xValue,{
       toValue: -100,
       duration: 5000
