@@ -1,4 +1,4 @@
-import React, {Component} from 'react'
+import React from 'react'
 import {
   StyleSheet,
   View,
@@ -8,7 +8,6 @@ import {
 
 export default function WeatherCard (props){
   const {weatherObj} = props
-  console.log(weatherObj);
   return (
     <View style={styles.cardView}>
       <Text style={styles.cardCity}>

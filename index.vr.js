@@ -7,6 +7,7 @@ import {
   Pano,
 } from 'react-vr'
 import WeatherCard from './vr/components/WeatherCard'
+import Clouds from './vr/components/Clouds'
 
 import {API_KEY} from './secret.json'
 
@@ -37,9 +38,12 @@ class VRWeather extends Component {
     return (
       <View style={styles.VRWeather}>
         <Pano source={asset('sf.jpg')}/>
+
         {weatherObj && <WeatherCard
           weatherObj={weatherObj}
         />}
+
+        {weatherObj && <Clouds wind={weatherObj}/>}
       </View>
     )
   }
