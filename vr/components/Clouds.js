@@ -12,16 +12,30 @@ export default class Clouds extends Component {
 
   constructor(props){
     super(props)
-    this.state={}
+    this.state={
+      xValue: new Animated.Value(100)
+    }
+  }
+
+  componentDidMount(){
+    this.moveClouds()
+  }
+
+  moveClouds(){
+    Animated.timing(this.state.xValue,{
+      toValue: -100,
+      duration: 5000
+    }).start()
   }
 
   render(){
     return (
-      <View style={
+      <Animated.View style={
         {transform: [
           {translate: [0,-25,-150]},
           {rotateX: 90},
-          {rotateZ: props.weatherObj.wind.deg}
+          {rotateZ: props.weatherObj.wind.deg},
+          {translateX: this.state.xValue}
         ]}
       }>
       <Model
@@ -30,7 +44,7 @@ export default class Clouds extends Component {
       }}
       scale={0.01}
       />
-      </View>
+      </Animated.View>
     )
   }
 }
