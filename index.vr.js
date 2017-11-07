@@ -2,6 +2,7 @@ import React, {Component} from 'react'
 import {
   AppRegistry,
   asset,
+  StyleSheet,
   View,
   Pano,
 } from 'react-vr'
@@ -34,7 +35,7 @@ class VRWeather extends Component {
   render(){
     const {weatherObj} = this.state
     return (
-      <View>
+      <View style={styles.VRWeather}>
         <Pano source={asset('sf.jpg')}/>
         {weatherObj && <WeatherCard
           weatherObj={weatherObj}
@@ -42,8 +43,13 @@ class VRWeather extends Component {
       </View>
     )
   }
-
 }
+
+const styles = StyleSheet.create({
+  VRWeather: {
+    layoutOrigin: [0.5,0.5],
+  }
+})
 
 
 AppRegistry.registerComponent(
