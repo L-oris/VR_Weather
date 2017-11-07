@@ -5,8 +5,10 @@ import {
   View,
   Pano,
 } from 'react-vr'
+import WeatherCard from './vr/components/WeatherCard'
 
-const {API_KEY} = require('./secret.json')
+import {API_KEY} from './secret.json'
+
 
 class VRWeather extends Component {
 
@@ -22,7 +24,7 @@ class VRWeather extends Component {
       })
       const json = await apiResponse.json()
 
-      this.setState({weather: json})
+      this.setState({weatherObj: json})
 
     } catch(e){
       console.log('Error happened fetching weather from API');
@@ -30,9 +32,13 @@ class VRWeather extends Component {
   }
 
   render(){
+    const {weatherObj} = this.state
     return (
       <View>
         <Pano source={asset('sf.jpg')}/>
+        {weatherObj && <WeatherCard
+          weatherObj={weatherObj}
+        />}
       </View>
     )
   }
